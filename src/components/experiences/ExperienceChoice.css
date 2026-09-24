@@ -1,0 +1,301 @@
+/* ==========================================================
+   EXPERIENCE CHOICE
+   Deux parcours principaux de la plateforme
+   ========================================================== */
+
+.experience-choice {
+  position: relative;
+  padding: 8rem 6vw 9rem;
+  background: #eee7da;
+  color: #26352f;
+}
+
+
+/* ---------- Introduction ---------- */
+
+.experience-choice__intro {
+  max-width: 760px;
+  margin: 0 auto 5rem;
+  text-align: center;
+}
+
+.experience-choice__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  margin-bottom: 1.4rem;
+
+  font-family: "Jost", system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  color: #8a7654;
+}
+
+.experience-choice__eyebrow::before,
+.experience-choice__eyebrow::after {
+  content: "";
+  width: 2rem;
+  height: 1px;
+
+  background: #b9a47c;
+}
+
+.experience-choice__title {
+  margin: 0;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.8rem, 5vw, 5rem);
+  font-weight: 300;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+
+  color: #26352f;
+}
+
+.experience-choice__description {
+  max-width: 620px;
+  margin: 2rem auto 0;
+
+  font-family: "Jost", system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.8;
+
+  color: #5d655f;
+}
+
+
+/* ---------- Grille ---------- */
+
+.experience-choice__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+
+/* ---------- Cartes ---------- */
+
+.experience-choice__card {
+  position: relative;
+  min-height: 620px;
+
+  overflow: hidden;
+
+  color: #eee7da;
+  text-decoration: none;
+
+  background: #26352f;
+  isolation: isolate;
+}
+
+
+/* ---------- Images ---------- */
+
+.experience-choice__card {
+  position: relative;
+  overflow: hidden;
+  min-height: 520px;
+  border-radius: 2px;
+  background: #26352f;
+}
+
+.experience-choice__image {
+  position: absolute;
+  inset: 0;
+
+  background-size: cover;
+  background-position: center;
+
+  transition: transform 0.8s ease;
+}
+
+/* Photo 01 */
+.experience-choice__card--private .experience-choice__image {
+  background-image: url("/images/experiences/gemi-01.jpg");
+}
+
+/* Photo 02 */
+.experience-choice__card--groups .experience-choice__image {
+  background-image: url("/images/experiences/gemi-02.jpg");
+}
+
+/* Assombrissement de la photo pour garder le texte lisible */
+.experience-choice__overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(20, 27, 24, 0.88) 0%,
+      rgba(20, 27, 24, 0.38) 45%,
+      rgba(20, 27, 24, 0.05) 75%
+    );
+}
+
+/* Petit zoom au survol */
+.experience-choice__card:hover .experience-choice__image {
+  transform: scale(1.04);
+}
+
+/* ---------- Voile ---------- */
+
+.experience-choice__overlay {
+  position: absolute;
+  inset: 0;
+
+  z-index: -1;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(24, 35, 30, 0.92) 0%,
+      rgba(24, 35, 30, 0.5) 42%,
+      rgba(24, 35, 30, 0.05) 100%
+    );
+
+  transition:
+    background 0.8s ease;
+}
+
+
+/* ---------- Contenu ---------- */
+
+.experience-choice__content {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 2rem 2.2rem 2.4rem;
+}
+
+.experience-choice__number {
+  font-family: "Jost", system-ui, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+
+  color: #cbb58a;
+}
+
+.experience-choice__category {
+  margin: 0 0 0.8rem;
+
+  font-family: "Jost", system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  color: #cbb58a;
+}
+
+.experience-choice__content h3 {
+  margin: 0 0 2rem;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.5rem, 4vw, 4.4rem);
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -0.015em;
+}
+
+.experience-choice__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+
+  font-family: "Jost", system-ui, sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+
+  color: #eee7da;
+}
+
+.experience-choice__link span {
+  display: inline-block;
+
+  font-size: 1.2rem;
+
+  transition: transform 0.4s ease;
+}
+
+
+/* ---------- Hover ---------- */
+
+.experience-choice__card:hover .experience-choice__image {
+  transform: scale(1.07);
+}
+
+.experience-choice__card:hover .experience-choice__overlay {
+  background:
+    linear-gradient(
+      to top,
+      rgba(24, 35, 30, 0.95) 0%,
+      rgba(24, 35, 30, 0.58) 45%,
+      rgba(24, 35, 30, 0.12) 100%
+    );
+}
+
+.experience-choice__card:hover .experience-choice__link span {
+  transform: translateX(6px);
+}
+
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 800px) {
+  .experience-choice {
+    padding: 6rem 1.25rem 6rem;
+  }
+
+  .experience-choice__intro {
+    margin-bottom: 3rem;
+  }
+
+  .experience-choice__grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .experience-choice__card {
+    min-height: 520px;
+  }
+
+  .experience-choice__content {
+    padding: 1.5rem;
+  }
+}
+
+
+@media (max-width: 500px) {
+  .experience-choice {
+    padding-top: 5rem;
+  }
+
+  .experience-choice__title {
+    font-size: 2.8rem;
+  }
+
+  .experience-choice__description {
+    font-size: 0.95rem;
+  }
+
+  .experience-choice__card {
+    min-height: 460px;
+  }
+
+  .experience-choice__content h3 {
+    font-size: 2.8rem;
+  }
+}

@@ -1,0 +1,62 @@
+.destination-placeholder {
+  min-height: 75vh;
+
+  padding: 160px 40px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  background: #f7f4ee;
+  color: #26352f;
+}
+
+.destination-placeholder > span {
+  margin-bottom: 20px;
+
+  font-size: 0.7rem;
+  font-weight: 600;
+
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+
+  color: #71806c;
+}
+
+.destination-placeholder h1 {
+  margin: 0;
+
+  font-size: clamp(3rem, 7vw, 6rem);
+
+  line-height: 0.95;
+  font-weight: 400;
+
+  letter-spacing: -0.05em;
+}
+
+.destination-placeholder p {
+  max-width: 520px;
+
+  margin: 30px 0;
+
+  font-size: 1rem;
+  line-height: 1.7;
+
+  color: #6d716b;
+}
+
+.destination-placeholder a {
+  color: #26352f;
+
+  font-size: 0.8rem;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  border-bottom: 1px solid #26352f;
+
+  padding-bottom: 5px;
+}
