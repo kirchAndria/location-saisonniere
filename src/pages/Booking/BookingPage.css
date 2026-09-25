@@ -1,0 +1,256 @@
+.booking {
+  min-height: 100svh;
+
+  padding: 150px 40px 100px;
+
+  color: #26352f;
+  background: #f7f4ee;
+  font-family: "Jost", system-ui, sans-serif;
+}
+
+.booking *,
+.booking *::before,
+.booking *::after {
+  box-sizing: border-box;
+}
+
+.booking__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.booking__intro > span {
+  display: block;
+
+  margin-bottom: 16px;
+
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-variant: small-caps;
+
+  color: #71806c;
+}
+
+.booking__intro h1 {
+  margin: 0;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.4rem, 4.5vw, 4.2rem);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+}
+
+.booking__intro p {
+  max-width: 440px;
+  margin: 22px 0 0;
+
+  font-size: 0.95rem;
+  line-height: 1.75;
+
+  color: #6d716b;
+}
+
+.booking__phones a {
+  color: #26352f;
+  white-space: nowrap;
+}
+
+.booking__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.booking__types {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  margin: 0;
+  padding: 0;
+
+  border: none;
+}
+
+.booking__types legend {
+  margin-bottom: 10px;
+  padding: 0;
+
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-variant: small-caps;
+
+  color: #71806c;
+}
+
+.booking__types label {
+  display: inline-flex;
+  align-items: center;
+
+  min-height: 36px;
+  padding: 0 16px;
+
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-variant: small-caps;
+
+  cursor: pointer;
+  border: 1px solid rgba(38, 53, 47, 0.25);
+  border-radius: 999px;
+
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.booking__types label.is-active {
+  color: #f7f4ee;
+  background: #26352f;
+  border-color: #26352f;
+}
+
+.booking__types input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.booking__types label:focus-within {
+  outline: 2px solid #71806c;
+  outline-offset: 2px;
+}
+
+.booking__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.booking__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-variant: small-caps;
+
+  color: #71806c;
+}
+
+.booking__field input,
+.booking__field select,
+.booking__field textarea {
+  width: 100%;
+  padding: 12px 14px;
+
+  font: inherit;
+  font-size: 0.95rem;
+  letter-spacing: 0;
+  text-transform: none;
+  font-weight: 400;
+
+  color: #26352f;
+  background: #fffdf8;
+  border: 1px solid rgba(38, 53, 47, 0.18);
+  border-radius: 4px;
+}
+
+.booking__field input:focus,
+.booking__field select:focus,
+.booking__field textarea:focus {
+  outline: 2px solid #71806c;
+  outline-offset: 1px;
+}
+
+.booking__btn {
+  align-self: flex-start;
+
+  min-height: 2.5rem;
+  padding: 0 1.5rem;
+
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-variant: small-caps;
+
+  cursor: pointer;
+  color: #f7f4ee;
+  background: #26352f;
+  border: 1px solid #26352f;
+  border-radius: 999px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.booking__btn:hover {
+  background: #30433b;
+  transform: translateY(-1px);
+}
+
+.booking__done {
+  padding: 40px;
+
+  background: #efeadf;
+  border-radius: 2px;
+}
+
+.booking__done h2 {
+  margin: 0 0 14px;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 2.4rem;
+  font-weight: 400;
+}
+
+.booking__done p {
+  margin: 0 0 28px;
+
+  line-height: 1.7;
+  color: #6d716b;
+}
+
+.booking__link {
+  display: inline-block;
+
+  margin-top: 22px;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  color: #26352f;
+}
+
+@media (max-width: 800px) {
+
+  .booking {
+    padding: 120px 20px 80px;
+  }
+
+  .booking__inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .booking__row {
+    grid-template-columns: 1fr;
+  }
+
+  .booking__done {
+    padding: 28px 22px;
+  }
+
+}

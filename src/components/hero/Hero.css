@@ -1,13 +1,16 @@
 /* ==========================================================
-   HERO — diaporama immersif, composition éditoriale
-   Ouverture : fond → titre (masque) → texte → boutons → contrôles
+   HERO — diaporama, composition éditoriale
+   Le texte forme une « légende » ancrée en bas à gauche de la photo :
+   petit label, titre léger, filet, texte court, deux actions discrètes.
+   À droite : les trois destinations, la légende de la photo, les contrôles.
+   Ouverture : fond → titre (masque) → texte → boutons → contrôles.
    ========================================================== */
 
 .hero {
-  --hero-paper: #e9dfcf;
-  --hero-sand: #cbb58a;
-  --hero-basalt: #26352f;
-  --hero-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --hero-paper: #ece3d3;
+  --hero-sand: var(--sand-soft);
+  --hero-basalt: var(--ink);
+  --hero-ease: var(--ease);
 
   position: relative;
   display: flex;
@@ -17,7 +20,7 @@
   isolation: isolate;
   color: var(--hero-paper);
   background: var(--hero-basalt);
-  font-family: "Jost", system-ui, sans-serif;
+  font-family: var(--sans);
   text-align: left;
   touch-action: pan-y;
 }
@@ -85,7 +88,9 @@
 }
 
 
-/* ---------- Voile de lisibilité ---------- */
+/* ---------- Voile de lisibilité ----------
+   Volontairement léger : il ne couvre que le coin où se trouve le texte,
+   la photo reste lumineuse partout ailleurs. */
 
 .hero__shade {
   position: absolute;
@@ -95,19 +100,20 @@
 
   background:
     linear-gradient(
-      to bottom,
-      rgba(25, 37, 32, 0.46) 0%,
-      rgba(25, 37, 32, 0) 22%
+      90deg,
+      rgba(22, 32, 28, 0.62) 0%,
+      rgba(22, 32, 28, 0.44) 32%,
+      rgba(22, 32, 28, 0) 64%
     ),
     radial-gradient(
-      90% 75% at 0% 100%,
-      rgba(25, 37, 32, 0.52) 0%,
-      rgba(25, 37, 32, 0) 65%
+      62% 62% at 100% 100%,
+      rgba(22, 32, 28, 0.6) 0%,
+      rgba(22, 32, 28, 0) 100%
     ),
     linear-gradient(
       to top,
-      rgba(25, 37, 32, 0.56) 0%,
-      rgba(25, 37, 32, 0) 55%
+      rgba(22, 32, 28, 0.46) 0%,
+      rgba(22, 32, 28, 0) 52%
     );
 }
 
@@ -125,12 +131,12 @@
   margin: 0 auto;
   padding:
     calc(82px + 2rem)
-    1.5rem
-    calc(1.5rem + env(safe-area-inset-bottom, 0px));
+    var(--gutter)
+    calc(1.75rem + env(safe-area-inset-bottom, 0px));
 }
 
 .hero__content {
-  max-width: 46rem;
+  max-width: 34rem;
 }
 
 
@@ -142,10 +148,13 @@
   gap: 0.9rem;
   margin: 0 0 1.5rem;
 
-  font-size: 0.9rem;
-  letter-spacing: 0.03em;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
 
-  color: var(--hero-sand);
+  color: var(--hero-paper);
+  text-shadow: 0 1px 12px rgba(18, 26, 22, 0.45);
 
   opacity: 0;
   animation: heroLift 1s ease 0.1s forwards;
@@ -153,89 +162,114 @@
 
 .hero__eyebrow::before {
   content: "";
-  width: 2.5rem;
+  width: 2.2rem;
   height: 1px;
 
-  background: currentColor;
-  opacity: 0.7;
+  background: var(--hero-sand);
 }
 
 .hero__title {
-  margin: 0 0 1.5rem;
+  margin: 0 0 1.6rem;
 
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: var(--serif);
   font-weight: 300;
 
+  font-size: clamp(2.6rem, 11vw, 4.4rem);
   font-size: clamp(
-    3.2rem,
-    min(9vw, 13vh),
-    8rem
+    2.6rem,
+    min(6vw, calc((100svh - 470px) / 3.1)),
+    5.2rem
   );
 
-  font-size: clamp(
-    3.2rem,
-    min(9vw, calc((100svh - 460px) / 2.9)),
-    8rem
-  );
+  line-height: 1.02;
+  letter-spacing: -0.01em;
 
-  line-height: 0.96;
-  letter-spacing: -0.015em;
+  text-shadow: 0 2px 28px rgba(18, 26, 22, 0.32);
+}
+
+.hero__title em {
+  font-style: italic;
+  font-weight: 300;
+  color: #f4ecdf;
 }
 
 .hero__line {
   display: block;
   overflow: hidden;
-  padding-bottom: 0.12em;
-  margin-bottom: -0.12em;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
 }
 
 .hero__line > span {
   display: block;
   transform: translateY(110%);
-  animation: heroRise 1.2s var(--hero-ease) forwards;
+  animation: heroRise 1.3s var(--hero-ease) forwards;
 }
 
 .hero__line:nth-child(1) > span {
   animation-delay: 0.25s;
 }
 
-.hero__line:nth-child(2) {
-  padding-left: 0.5em;
-}
-
 .hero__line:nth-child(2) > span {
   animation-delay: 0.4s;
-}
-
-.hero__line:nth-child(3) {
-  padding-left: 1em;
 }
 
 .hero__line:nth-child(3) > span {
   animation-delay: 0.55s;
 }
 
+/* Le décalage progressif des lignes reste réservé au desktop :
+   sur un titre qui passe déjà sur 2-3 lignes en mobile, il pousserait
+   le texte hors de l'écran. */
+@media (min-width: 900px) {
+  .hero__line:nth-child(2) {
+    padding-left: 0.4em;
+  }
+
+  .hero__line:nth-child(3) {
+    padding-left: 0.8em;
+  }
+}
+
 .hero__text {
-  max-width: 38rem;
-  margin: 0 0 2rem;
+  position: relative;
+  max-width: 28rem;
+  margin: 0 0 1.75rem;
+  padding-top: 1.4rem;
 
-  font-size: 1.05rem;
+  font-size: 0.98rem;
   font-weight: 300;
-  line-height: 1.65;
+  line-height: 1.7;
 
-  color: rgba(233, 223, 207, 0.88);
+  color: rgba(244, 236, 223, 0.95);
+  text-shadow: 0 1px 14px rgba(18, 26, 22, 0.4);
 
   opacity: 0;
   animation: heroLift 1s ease 0.95s forwards;
 }
 
+.hero__text::before {
+  content: "";
 
-/* ---------- Boutons ---------- */
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 3rem;
+  height: 1px;
+
+  background: var(--hero-sand);
+  opacity: 0.7;
+}
+
+
+/* ---------- Actions : une action pleine, une action en simple lien ---------- */
 
 .hero__actions {
   display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.75rem;
 
   opacity: 0;
   animation: heroLift 1s ease 1.1s forwards;
@@ -246,20 +280,21 @@
   align-items: center;
   justify-content: center;
 
-  min-height: 3.25rem;
-  padding: 0 2rem;
+  min-height: 2.9rem;
 
   border: 1px solid transparent;
 
-  font-size: 0.95rem;
-  letter-spacing: 0.03em;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
   text-decoration: none;
 
   transition:
-    transform 0.35s var(--hero-ease),
-    background-color 0.35s ease,
-    border-color 0.35s ease,
-    color 0.35s ease;
+    transform 0.5s var(--hero-ease),
+    background-color 0.4s ease,
+    border-color 0.4s ease,
+    color 0.4s ease;
 }
 
 .hero__btn:focus-visible,
@@ -269,32 +304,46 @@
   outline-offset: 3px;
 }
 
-
-/* Bouton principal : olive profond */
-
 .hero__btn--primary {
-  background: var(--hero-basalt);
-  color: var(--hero-paper);
+  padding: 0 1.6rem;
+
+  background: var(--hero-paper);
+  color: var(--ink);
+}
+
+.hero__btn--primary::after {
+  content: "→";
+
+  margin-left: 0.9rem;
+
+  font-size: 0.95rem;
+  letter-spacing: 0;
+
+  transition: transform 0.5s var(--hero-ease);
 }
 
 .hero__btn--primary:hover {
-  background: #30433b;
-  transform: translateY(-2px);
+  background: #f6efe3;
 }
 
-
-/* Bouton secondaire : champagne */
+.hero__btn--primary:hover::after {
+  transform: translateX(4px);
+}
 
 .hero__btn--ghost {
-  border-color: rgba(203, 181, 138, 0.72);
+  padding: 0;
+
+  border-width: 0 0 1px;
+  border-color: rgba(203, 181, 138, 0.6);
+
+  min-height: 2.2rem;
+
   color: var(--hero-paper);
 }
 
 .hero__btn--ghost:hover {
-  background: rgba(203, 181, 138, 0.14);
   border-color: var(--hero-sand);
-  color: #f1e8da;
-  transform: translateY(-2px);
+  color: #f6efe3;
 }
 
 
@@ -308,17 +357,19 @@
 }
 
 
-/* ---------- Encadré des destinations ---------- */
+/* ---------- Encadré des destinations (desktop) ---------- */
 
 .hero__places {
   display: none;
 }
 
 .hero__places-label {
-  margin: 0 0 0.6rem;
+  margin: 0 0 0.9rem;
 
-  font-size: 0.85rem;
-  letter-spacing: 0.03em;
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
 
   color: var(--hero-sand);
 }
@@ -327,33 +378,51 @@
   margin: 0;
   padding: 0;
   list-style: none;
+
+  counter-reset: place;
 }
 
 .hero__place {
   position: relative;
-  display: block;
 
-  padding: 0.8rem 0;
+  display: grid;
+  grid-template-columns: 2.2rem 1fr;
+  align-items: baseline;
 
-  border-top: 1px solid rgba(203, 181, 138, 0.32);
+  padding: 0.85rem 0;
+
+  border-top: 1px solid rgba(236, 227, 211, 0.24);
 
   color: var(--hero-paper);
   text-decoration: none;
 
+  counter-increment: place;
+
   transition: color 0.6s ease;
 }
 
+.hero__place::before {
+  content: counter(place, decimal-leading-zero);
+
+  grid-column: 1;
+  grid-row: 1 / span 2;
+
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  font-variant-numeric: tabular-nums;
+
+  color: var(--hero-sand);
+}
+
 .hero__places-list li:last-child .hero__place {
-  border-bottom: 1px solid rgba(203, 181, 138, 0.32);
+  border-bottom: 1px solid rgba(236, 227, 211, 0.24);
 }
 
 .hero__place.is-dim {
-  color: rgba(233, 223, 207, 0.58);
+  color: rgba(236, 227, 211, 0.72);
 }
 
-
 /* Filet champagne */
-
 .hero__place::after {
   content: "";
 
@@ -366,7 +435,7 @@
 
   background: var(--hero-sand);
 
-  transition: width 0.7s var(--hero-ease);
+  transition: width 0.9s var(--hero-ease);
 }
 
 .hero__place.is-active::after,
@@ -376,7 +445,7 @@
 }
 
 .hero__place:hover {
-  color: #f1e8da;
+  color: #f6efe3;
 }
 
 .hero__place:focus-visible {
@@ -384,25 +453,30 @@
 }
 
 .hero__place-name {
-  display: block;
+  grid-column: 2;
 
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 1.3rem;
+  text-shadow: 0 1px 12px rgba(18, 26, 22, 0.45);
+
+  font-family: var(--serif);
+  font-size: 1.28rem;
   font-weight: 400;
   line-height: 1.2;
 }
 
 .hero__place-area {
-  display: block;
+  grid-column: 2;
 
-  margin-top: 0.1rem;
+  margin-top: 0.15rem;
 
-  font-size: 0.8rem;
-  opacity: 0.75;
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  opacity: 0.72;
 }
 
 
-/* ---------- Caption ---------- */
+/* ---------- Légende de la photo ---------- */
 
 .hero__caption {
   margin-bottom: 0.9rem;
@@ -416,8 +490,9 @@
 .hero__caption-place {
   display: block;
 
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: var(--serif);
   font-size: 1.35rem;
+  font-style: italic;
   font-weight: 400;
   line-height: 1.15;
 }
@@ -425,9 +500,12 @@
 .hero__caption-loc {
   display: block;
 
-  margin-top: 0.2rem;
+  margin-top: 0.3rem;
 
-  font-size: 0.85rem;
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
   color: var(--hero-sand);
 }
 
@@ -448,8 +526,8 @@
   gap: 0.9rem;
   min-width: 0;
 
-  font-size: 0.85rem;
-  letter-spacing: 0.06em;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
   font-variant-numeric: tabular-nums;
 }
 
@@ -460,7 +538,7 @@
   height: 1px;
   overflow: hidden;
 
-  background: rgba(203, 181, 138, 0.42);
+  background: rgba(236, 227, 211, 0.3);
 }
 
 .hero__fill {
@@ -490,7 +568,7 @@
   display: inline-grid;
   place-items: center;
 
-  width: 2.75rem;
+  width: 2.5rem;
   height: 2.75rem;
   padding: 0;
 
@@ -498,7 +576,7 @@
   background: none;
 
   color: var(--hero-paper);
-  opacity: 0.85;
+  opacity: 0.8;
 
   cursor: pointer;
 
@@ -510,7 +588,10 @@
 }
 
 .hero__navbtn svg {
-  transition: transform 0.4s var(--hero-ease);
+  width: 18px;
+  height: 18px;
+
+  transition: transform 0.5s var(--hero-ease);
 }
 
 .hero__navbtn--prev:hover svg {
@@ -523,16 +604,17 @@
 
 .hero__pause {
   min-height: 2.75rem;
-  padding: 0 0.5rem;
+  padding: 0 0.4rem 0 0.75rem;
 
   border: 0;
   background: none;
 
-  color: rgba(233, 223, 207, 0.78);
+  color: rgba(236, 227, 211, 0.75);
 
   font: inherit;
-  font-size: 0.8rem;
-  letter-spacing: 0.04em;
+  font-size: 0.64rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 
   cursor: pointer;
 
@@ -582,22 +664,14 @@
 
     gap: 4rem;
 
-    padding:
-      calc(82px + 2rem)
-      6vw
-      6.5rem;
-  }
-
-  .hero__actions {
-    flex-direction: row;
-    gap: 1rem;
+    padding-bottom: 5.25rem;
   }
 
   .hero__side {
     display: flex;
     flex-direction: column;
 
-    flex: 0 0 24rem;
+    flex: 0 0 19.5rem;
     gap: 2rem;
 
     margin-top: 0;
@@ -608,12 +682,12 @@
   }
 
   .hero__caption {
-    min-height: 3.4rem;
-    margin-bottom: 1.25rem;
+    min-height: 3.1rem;
+    margin-bottom: 1.1rem;
   }
 
   .hero__caption-place {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -628,7 +702,7 @@
   .hero__scroll {
     position: absolute;
     left: 50%;
-    bottom: 1.5rem;
+    bottom: 1.4rem;
 
     z-index: 1;
 
@@ -640,10 +714,11 @@
 
     transform: translateX(-50%);
 
-    color: rgba(233, 223, 207, 0.82);
+    color: rgba(236, 227, 211, 0.8);
 
-    font-size: 0.8rem;
-    letter-spacing: 0.05em;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
     text-decoration: none;
 
     opacity: 0;
@@ -663,7 +738,7 @@
 
   .hero__scroll i {
     width: 1px;
-    height: 2.6rem;
+    height: 2.2rem;
 
     background: currentColor;
 
@@ -710,7 +785,7 @@
   }
 
   to {
-    transform: scale(1.07);
+    transform: scale(1.06);
   }
 }
 
@@ -778,6 +853,7 @@
   }
 
   .hero__btn,
+  .hero__btn::after,
   .hero__place,
   .hero__place::after,
   .hero__navbtn svg,

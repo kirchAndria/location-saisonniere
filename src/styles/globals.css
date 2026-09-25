@@ -1,3 +1,41 @@
+/* ==========================================================
+   SOCLE GLOBAL
+   ========================================================== */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+
+  font-family: var(--sans);
+  font-weight: 400;
+
+  color: var(--ink);
+  background: var(--ivory);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(168, 147, 95, 0.32);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+
+/* ==========================================================
+   PAGES TEMPORAIRES (destinations en préparation)
+   ========================================================== */
+
 .destination-placeholder {
   min-height: 75vh;
 
@@ -10,8 +48,8 @@
 
   text-align: center;
 
-  background: #f7f4ee;
-  color: #26352f;
+  background: var(--ivory);
+  color: var(--ink);
 }
 
 .destination-placeholder > span {
@@ -23,18 +61,19 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
 
-  color: #71806c;
+  color: var(--sage);
 }
 
 .destination-placeholder h1 {
   margin: 0;
 
-  font-size: clamp(3rem, 7vw, 6rem);
+  font-family: var(--serif);
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
 
   line-height: 0.95;
-  font-weight: 400;
+  font-weight: 300;
 
-  letter-spacing: -0.05em;
+  letter-spacing: -0.01em;
 }
 
 .destination-placeholder p {
@@ -45,18 +84,18 @@
   font-size: 1rem;
   line-height: 1.7;
 
-  color: #6d716b;
+  color: var(--muted);
 }
 
 .destination-placeholder a {
-  color: #26352f;
+  color: var(--ink);
 
   font-size: 0.8rem;
   font-weight: 600;
 
   text-decoration: none;
 
-  border-bottom: 1px solid #26352f;
+  border-bottom: 1px solid var(--ink);
 
   padding-bottom: 5px;
 }

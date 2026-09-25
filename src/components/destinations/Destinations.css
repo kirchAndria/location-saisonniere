@@ -1,215 +1,314 @@
+/* ==========================================================
+   DESTINATIONS
+   Un moment de découverte : une destination dominante à gauche,
+   deux plus compactes à droite. Toute l'information (numéro, lieu,
+   nom, thème, lien) reste lisible sur le papier, sous ou à côté de la photo.
+   ========================================================== */
+
 .destinations {
-  padding: 140px 40px;
-  background: #f6f2eb;
+  padding:
+    var(--section-y)
+    max(var(--gutter), calc((100% - var(--measure)) / 2));
+
+  background: var(--ivory);
+  scroll-margin-top: 82px;
 }
 
-.destinations__intro {
-  max-width: 1400px;
-  margin: 0 auto 60px;
 
+/* ---------- Introduction ---------- */
+
+.destinations__intro {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  gap: 60px;
+  gap: 3rem;
+
+  margin: 0 0 clamp(2.5rem, 5vw, 4rem);
 }
 
 .destinations__eyebrow {
-  display: block;
-  margin-bottom: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
 
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
+  margin-bottom: 1.4rem;
+
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
 
-  color: #65705f;
+  color: var(--sand);
+}
+
+.destinations__eyebrow::before {
+  content: "";
+  width: 2.2rem;
+  height: 1px;
+
+  background: currentColor;
+  opacity: 0.8;
 }
 
 .destinations__title {
   margin: 0;
 
-  font-size: clamp(2.5rem, 5vw, 5rem);
-  line-height: 0.98;
-  font-weight: 400;
-  letter-spacing: -0.04em;
+  font-family: var(--serif);
+  font-size: clamp(2rem, 3.6vw, 3.3rem);
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
 
-  color: #26352f;
+  color: var(--ink);
 }
 
 .destinations__description {
-  max-width: 360px;
+  max-width: 20rem;
   margin: 0;
 
-  font-size: 1rem;
-  line-height: 1.7;
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.8;
 
-  color: #6f7068;
+  color: var(--muted);
 }
 
-/* GRID */
+
+/* ---------- Grille ---------- */
 
 .destinations__grid {
-  max-width: 1400px;
-  margin: 0 auto;
-
   display: grid;
-  grid-template-columns: 1.35fr 1fr;
-  grid-template-rows: 300px 300px;
-
-  gap: 18px;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  gap: clamp(2rem, 3vw, 2.5rem) clamp(2rem, 4.5vw, 4rem);
 }
 
-/* CARTE */
+
+/* ---------- Carte ---------- */
 
 .destination-card {
   position: relative;
-
   display: block;
-  overflow: hidden;
 
+  color: var(--ink);
   text-decoration: none;
-
-  background: #26352f;
 }
 
-.destination-card--featured {
-  grid-row: span 2;
+.destination-card:focus-visible {
+  outline: 2px solid var(--sage);
+  outline-offset: 6px;
 }
 
 .destination-card__image {
-  position: absolute;
-  inset: 0;
-
+  position: relative;
   overflow: hidden;
+
+  background: #d9d3c4;
 }
 
 .destination-card__image img {
+  position: absolute;
+  inset: 0;
+
+  display: block;
   width: 100%;
   height: 100%;
 
   object-fit: cover;
 
-  display: block;
+  /* léger cadrage : masque la fine bande noire de certaines photos */
+  transform: scale(1.03);
+  transform-origin: 50% 0;
 
-  transition: transform 0.9s ease;
+  transition: transform 1.4s var(--ease);
 }
 
 .destination-card:hover .destination-card__image img {
-  transform: scale(1.045);
+  transform: scale(1.07);
 }
 
-/* OVERLAY */
-
+/* Le texte ne se pose plus sur la photo */
 .destination-card__overlay {
-  position: absolute;
-  inset: 0;
-
-  background:
-    linear-gradient(
-      to top,
-      rgba(18, 25, 22, 0.9) 0%,
-      rgba(18, 25, 22, 0.42) 45%,
-      rgba(18, 25, 22, 0.05) 75%
-    );
+  display: none;
 }
-
-/* CONTENU */
 
 .destination-card__content {
-  position: absolute;
-  inset: 0;
-
-  padding: 28px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  color: #f8f4ec;
+  color: var(--ink);
 }
 
 .destination-card__number {
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.14em;
 
-  opacity: 0.8;
+  color: var(--sand);
 }
 
 .destination-card__location {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 0.7rem;
 
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.13em;
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
 
-  opacity: 0.75;
+  color: var(--sage);
 }
 
 .destination-card__name {
   margin: 0;
 
-  font-size: clamp(1.7rem, 3vw, 3rem);
-  line-height: 1;
-
-  font-weight: 400;
-  letter-spacing: -0.03em;
+  font-family: var(--serif);
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -0.005em;
 }
 
 .destination-card__tagline {
-  margin: 12px 0 22px;
+  margin: 0.8rem 0 1.4rem;
 
-  font-size: 0.9rem;
-  line-height: 1.5;
+  font-family: var(--serif);
+  font-size: 1.12rem;
+  font-style: italic;
+  line-height: 1.4;
 
-  opacity: 0.85;
+  color: var(--muted);
 }
 
 .destination-card__link {
   display: inline-block;
 
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
+  padding-bottom: 0.35rem;
 
-  border-bottom: 1px solid rgba(248, 244, 236, 0.5);
+  border-bottom: 1px solid var(--line);
 
-  padding-bottom: 4px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+
+  transition: border-color 0.5s ease, color 0.5s ease;
 }
 
-/* MOBILE */
+.destination-card:hover .destination-card__link {
+  border-color: var(--sand);
+  color: var(--sand);
+}
 
-@media (max-width: 800px) {
 
-  .destinations {
-    padding: 90px 20px;
-  }
+/* ---------- Destination dominante ---------- */
+
+.destination-card--featured {
+  grid-row: span 2;
+}
+
+.destination-card--featured .destination-card__image {
+  aspect-ratio: 4 / 3;
+}
+
+.destination-card--featured .destination-card__content {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+
+  margin-top: 1.4rem;
+  padding-top: 1.4rem;
+
+  border-top: 1px solid var(--line);
+}
+
+.destination-card--featured .destination-card__number {
+  padding-top: 0.45rem;
+}
+
+.destination-card--featured .destination-card__name {
+  font-size: clamp(2rem, 3.2vw, 3rem);
+}
+
+
+/* ---------- Destinations compactes ---------- */
+
+.destination-card:not(.destination-card--featured) {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 1.5rem;
+  align-items: stretch;
+
+  padding-top: 1.5rem;
+
+  border-top: 1px solid var(--line);
+}
+
+.destination-card:not(.destination-card--featured) .destination-card__image {
+  align-self: start;
+
+  width: 100%;
+  aspect-ratio: 4 / 5;
+}
+
+.destination-card:not(.destination-card--featured) .destination-card__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 0.1rem 0 0.2rem;
+}
+
+.destination-card:not(.destination-card--featured) .destination-card__name {
+  font-size: clamp(1.6rem, 2.3vw, 2.1rem);
+}
+
+.destination-card:not(.destination-card--featured) .destination-card__tagline {
+  margin-bottom: 1.2rem;
+
+  font-size: 1.02rem;
+}
+
+
+/* ---------- Tablette / mobile ---------- */
+
+@media (max-width: 900px) {
 
   .destinations__intro {
     display: block;
-    margin-bottom: 40px;
   }
 
   .destinations__description {
-    margin-top: 24px;
+    margin-top: 1.6rem;
   }
 
   .destinations__grid {
-    display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: none;
-    gap: 14px;
+    gap: 2.5rem;
   }
 
-  .destination-card,
   .destination-card--featured {
-    min-height: 420px;
     grid-row: auto;
   }
 
-  .destination-card__content {
-    padding: 22px;
+}
+
+@media (max-width: 520px) {
+
+  .destination-card:not(.destination-card--featured) {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 1.1rem;
   }
 
+  .destination-card__tagline {
+    font-size: 1rem;
+  }
+
+  .destination-card:not(.destination-card--featured) .destination-card__tagline {
+    font-size: 0.95rem;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .destination-card__image img,
+  .destination-card__link {
+    transition: none;
+  }
 }

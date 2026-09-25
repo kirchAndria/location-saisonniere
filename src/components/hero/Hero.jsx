@@ -170,7 +170,7 @@ function Hero() {
           <h1 id="hero-title" className="hero__title">
             <span className="hero__line"><span>Des lieux</span></span>
             <span className="hero__line"><span>pour vivre</span></span>
-            <span className="hero__line"><span>autrement.</span></span>
+            <span className="hero__line"><span><em>autrement.</em></span></span>
           </h1>
 
           <p className="hero__text">

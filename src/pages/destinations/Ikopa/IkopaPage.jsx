@@ -1,4 +1,18 @@
+import { destinations } from "../../../data/destinations";
+import { ikopaImages } from "./ikopaContent";
+
+import Stay from "./sections/Stay";
+import Activities from "./sections/Activities";
+import Facilities from "./sections/Facilities";
+import Groups from "./sections/Groups";
+import Gallery from "./sections/Gallery";
+import Contact from "./sections/Contact";
+import FinalCta from "./sections/FinalCta";
+
 import "./IkopaPage.css";
+import "./IkopaSections.css";
+
+const ikopa = destinations.find((destination) => destination.id === "ikopa");
 
 function IkopaPage() {
   return (
@@ -9,7 +23,7 @@ function IkopaPage() {
 
         <img
           className="ikopa-hero__image"
-          src="/images/destinations/Ikopa/cover.jpg"
+          src={ikopaImages.hero}
           alt="Jardin de l'Ikopa"
         />
 
@@ -24,7 +38,7 @@ function IkopaPage() {
           <h1 className="ikopa-hero__title">
             Jardin
             <br />
-            de l'Ikopa
+            de l'<em>Ikopa</em>
           </h1>
 
           <p className="ikopa-hero__description">
@@ -53,7 +67,7 @@ function IkopaPage() {
           <h2>
             Un espace pensé
             <br />
-            pour vivre autrement.
+            pour vivre <em>autrement</em>.
           </h2>
 
           <p>
@@ -79,7 +93,7 @@ function IkopaPage() {
           <h2>
             Une destination,
             <br />
-            plusieurs façons de la vivre.
+            plusieurs façons de la <em>vivre</em>.
           </h2>
 
         </div>
@@ -137,6 +151,16 @@ function IkopaPage() {
         </div>
 
       </section>
+
+
+      {/* SECTIONS DÉTAILLÉES */}
+      <Stay data={ikopa} />
+      <Activities data={ikopa} />
+      <Facilities data={ikopa} />
+      <Groups data={ikopa} />
+      <Gallery />
+      <Contact data={ikopa} />
+      <FinalCta />
 
     </div>
   );

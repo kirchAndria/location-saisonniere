@@ -1,0 +1,34 @@
+/* ==========================================================
+   DESIGN TOKENS — partagés par toute la plateforme
+   Direction : boutique hospitality × travel editorial.
+   Peu de couleurs, deux polices, lignes fines.
+   ========================================================== */
+
+:root {
+
+  /* Couleurs */
+  --ink: #26352f;          /* vert profond : texte, fonds sombres */
+  --ink-deep: #1b2621;
+  --ivory: #f6f2eb;        /* fond principal */
+  --linen: #eee7da;        /* fond secondaire (sections teintées) */
+  --paper: #fffdf8;        /* cartes */
+  --sage: #71806c;         /* labels */
+  --mist: #a9b59f;         /* labels sur fond sombre */
+  --sand: #a8935f;         /* accent champagne (labels, filets) */
+  --sand-soft: #cbb58a;    /* champagne clair, sur photo / fond sombre */
+  --muted: #666b64;        /* texte secondaire */
+  --line: rgba(38, 53, 47, 0.14);
+  --line-light: rgba(248, 244, 236, 0.2);
+
+  /* Typographie */
+  --serif: "Cormorant Garamond", Georgia, serif;
+  --sans: "Jost", system-ui, sans-serif;
+
+  /* Rythme */
+  --measure: 1296px;                        /* largeur de contenu */
+  --gutter: clamp(20px, 5vw, 72px);         /* marge latérale */
+  --section-y: clamp(72px, 9vw, 128px);     /* respiration verticale */
+
+  /* Mouvement */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}

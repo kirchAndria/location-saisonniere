@@ -1,6 +1,6 @@
 .navbar {
   --navbar-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
-  --navbar-ink: var(--color-ink, #1f1d1a);
+  --navbar-ink: var(--ink, #26352f);
   --navbar-paper: #f7f4ee;
 
   position: fixed;
@@ -43,9 +43,9 @@
 .navbar__brand {
   justify-self: start;
   color: inherit;
-  font-size: 0.95rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
   text-decoration: none;
 }
@@ -57,8 +57,10 @@
   position: relative;
   padding: 0.4rem 0;
   color: inherit;
-  font-size: 0.95rem;
-  letter-spacing: 0.02em;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
   text-decoration: none;
 }
 .navbar__link::after {
@@ -80,12 +82,15 @@
   justify-self: end;
   display: inline-flex;
   align-items: center;
-  min-height: 2.75rem;
-  padding: 0 1.5rem;
+  min-height: 2.5rem;
+  padding: 0 1.4rem;
   border: 1px solid currentColor;
+  border-radius: 999px;
   color: inherit;
-  font-size: 0.92rem;
-  letter-spacing: 0.03em;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
   text-decoration: none;
   transition:
     background-color 0.35s ease,

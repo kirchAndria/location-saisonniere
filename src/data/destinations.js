@@ -26,13 +26,13 @@ export const destinations = [
           capacity: null,
 
           rooms: [
-            "3 chambres",
-            "1 chambre principale avec dressing et salle de bain"
+            "Chambre 1 — placard encastré, balcon côté rue",
+            "Chambre 2 — identique à la chambre 1, WC commun aux deux chambres",
+            "Chambre parentale — grand dressing, salle d'eau avec WC, sans balcon"
           ],
 
           features: [
-            "Cuisine ouverte",
-            "Salon",
+            "Cuisine ouverte sur le salon",
             "Buanderie",
             "WC visiteurs"
           ],
@@ -105,7 +105,7 @@ export const destinations = [
         id: "gym",
         name: "Salle de sport",
         category: "Sport",
-        schedule: "Lundi–samedi 06h00–19h/20h, dimanche 06h00–15h00",
+        schedule: "Lun., mer., ven., sam. 6h–20h · Mar., jeu. 6h–19h · Dim. 6h–15h",
 
         pricing: [
           {
@@ -165,7 +165,7 @@ export const destinations = [
           {
             amount: 110000,
             currency: "MGA",
-            unit: "session"
+            unit: "mois"
           }
         ]
       },

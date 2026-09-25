@@ -2,7 +2,7 @@ import { destinations } from "../../data/destinations";
 import "./Destinations.css";
 
 const destinationImages = {
-  ikopa: "/images/destinations/Ikopa/cover.jpg",
+  ikopa: "/images/destinations/Ikopa/facade.jpg",
   mantasoa: "/images/destinations/Mantasoa/cover.jpg",
   hassani: "/images/destinations/Hassani/cover.jpg",
 };
@@ -79,7 +79,7 @@ function Destinations() {
                 </h3>
 
                 <p className="destination-card__tagline">
-                  {destination.tagline}
+                  {destination.tagline ?? destination.theme}
                 </p>
 
                 <span className="destination-card__link">

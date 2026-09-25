@@ -1,0 +1,118 @@
+.experiences-page {
+  min-height: 100vh;
+
+  padding-top: 120px;
+
+  background: #f7f4ee;
+  color: #26352f;
+
+  font-family: "Jost", system-ui, sans-serif;
+}
+
+.experiences-header {
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding: 80px 40px;
+}
+
+.experiences-header > span {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #71806c;
+}
+
+.experiences-header h1 {
+  margin: 25px 0;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+
+  font-size: clamp(4rem, 8vw, 7rem);
+  line-height: 0.9;
+
+  font-weight: 400;
+}
+
+.experiences-header p {
+  max-width: 550px;
+
+  line-height: 1.7;
+
+  color: #6d716b;
+}
+
+.experiences-list {
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding: 0 40px 100px;
+}
+
+.experiences-list > div {
+  margin-bottom: 70px;
+}
+
+.experiences-list h2 {
+  margin-bottom: 5px;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+
+  font-size: 3rem;
+  font-weight: 400;
+}
+
+.experiences-list > div > p {
+  margin-bottom: 25px;
+
+  color: #777a74;
+}
+
+.experience-row {
+  display: flex;
+
+  gap: 30px;
+
+  padding: 22px 0;
+
+  border-top: 1px solid rgba(38, 53, 47, 0.14);
+}
+
+.experience-row > span {
+  width: 35px;
+
+  font-size: 0.65rem;
+
+  color: #92948e;
+}
+
+.experience-row h3 {
+  margin: 0;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+
+.experience-row p {
+  margin: 5px 0 0;
+
+  font-size: 0.8rem;
+
+  color: #777a74;
+}
+
+@media (max-width: 700px) {
+
+  .experiences-header {
+    padding: 60px 20px;
+  }
+
+  .experiences-list {
+    padding: 0 20px 70px;
+  }
+
+}

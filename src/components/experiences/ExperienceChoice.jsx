@@ -1,4 +1,5 @@
 import "./ExperienceChoice.css";
+import { Link } from "react-router-dom";
 
 function ExperienceChoice() {
   return (
@@ -54,8 +55,8 @@ function ExperienceChoice() {
         </a>
 
         {/* GROUPES & ENTREPRISES */}
-        <a
-          href="#groups"
+        <Link
+          to="/groups"
           className="experience-choice__card experience-choice__card--groups"
         >
           <div className="experience-choice__image" />
@@ -81,7 +82,7 @@ function ExperienceChoice() {
               </span>
             </div>
           </div>
-        </a>
+        </Link>
 
       </div>
     </section>
