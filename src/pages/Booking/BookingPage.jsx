@@ -26,7 +26,8 @@ function BookingPage() {
 
   const destination = destinations.find((d) => d.id === destinationId);
   const current = TYPES.find((t) => t.id === type);
-  const phones = destination.contacts?.[current.contact] ?? [];
+  const phones =
+    destination.contacts?.[current.contact] ?? destination.contacts?.central ?? [];
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -68,11 +69,12 @@ function BookingPage() {
 
         {sent ? (
           <div className="booking__done" role="status">
-            <h2>Demande prête.</h2>
+            <h2>Merci pour votre demande.</h2>
             <p>
-              Mode démonstration : votre demande n'a pas été transmise. Dans la
-              version finale, elle serait envoyée à l'équipe de{" "}
-              {destination.name}.
+              Dans la version finale de la plateforme, l'équipe de{" "}
+              {destination.name} recevrait vos informations et reviendrait
+              vers vous pour confirmer les disponibilités. Ceci est une
+              démonstration : rien n'a réellement été envoyé.
             </p>
 
             <button type="button" className="booking__btn" onClick={() => setSent(false)}>
@@ -126,12 +128,36 @@ function BookingPage() {
             </div>
 
             <label className="booking__field">
-              Dates souhaitées
-              <input name="dates" type="text" placeholder="Ex. du 12 au 15 novembre" />
+              E-mail
+              <input name="email" type="email" autoComplete="email" placeholder="vous@exemple.com" />
             </label>
 
+            <div className="booking__row">
+              <label className="booking__field">
+                Arrivée
+                <input name="checkin" type="date" />
+              </label>
+
+              <label className="booking__field">
+                Départ
+                <input name="checkout" type="date" />
+              </label>
+            </div>
+
+            <div className="booking__row">
+              <label className="booking__field">
+                Nombre de personnes
+                <input name="guests" type="number" min="1" placeholder="Ex. 4" />
+              </label>
+
+              <label className="booking__field">
+                Hébergement / activité souhaité(e)
+                <input name="item" type="text" placeholder="Ex. Appartement F4, Tennis…" />
+              </label>
+            </div>
+
             <label className="booking__field">
-              {type === "group" ? "Nombre de personnes et projet" : "Message"}
+              {type === "group" ? "Détails du projet (équipe, occasion...)" : "Message"}
               <textarea name="message" rows="4" />
             </label>
 

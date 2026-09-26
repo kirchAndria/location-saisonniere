@@ -1,0 +1,123 @@
+/* ==========================================================
+   FOOTER — présent sur toutes les pages, fournit l'ancre #contact
+   ========================================================== */
+
+.site-footer {
+  color: #f4ecdf;
+  background: var(--ink-deep);
+  font-family: var(--sans);
+}
+
+.site-footer__top {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+
+  padding:
+    clamp(3rem, 6vw, 5rem)
+    max(var(--gutter), calc((100% - var(--measure)) / 2))
+    clamp(2.5rem, 5vw, 3.5rem);
+
+  scroll-margin-top: 90px;
+}
+
+.site-footer__name {
+  display: inline-block;
+
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+
+  color: #f4ecdf;
+  text-decoration: none;
+}
+
+.site-footer__tagline {
+  max-width: 20rem;
+  margin: 1.1rem 0 0;
+
+  font-size: 0.85rem;
+  font-weight: 300;
+  line-height: 1.7;
+
+  color: rgba(244, 236, 223, 0.62);
+}
+
+.site-footer__col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.site-footer__label {
+  margin-bottom: 0.4rem;
+
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+
+  color: var(--sand-soft);
+}
+
+.site-footer__col a {
+  font-size: 0.82rem;
+  font-weight: 300;
+
+  color: rgba(244, 236, 223, 0.78);
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.site-footer__col a:hover {
+  color: #f4ecdf;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.site-footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  padding:
+    1.4rem
+    max(var(--gutter), calc((100% - var(--measure)) / 2))
+    1.6rem;
+
+  border-top: 1px solid rgba(244, 236, 223, 0.14);
+
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+
+  color: rgba(244, 236, 223, 0.5);
+}
+
+.site-footer__bottom a {
+  color: var(--sand-soft);
+  text-decoration: none;
+}
+
+.site-footer__bottom a:hover {
+  color: #f4ecdf;
+}
+
+@media (max-width: 900px) {
+  .site-footer__top {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 2.5rem;
+  }
+
+  .site-footer__brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 520px) {
+  .site-footer__top {
+    grid-template-columns: 1fr;
+  }
+}

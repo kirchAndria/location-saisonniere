@@ -31,12 +31,13 @@ export const heroConfig = {
   //   alt      : description de la photo (accessibilité), facultatif
   //   focus    : point d'intérêt pour le recadrage, facultatif
   //              ex. "20% 50%" si le sujet est à gauche, "80% 50%" à droite
-  //   Photos actuelles : 01 = façade d'Ikopa, 03 = chalet de Mantasoa,
-  //   05 et 06 = Hassani. 02 et 04 n'ont pas de légende tant que leur lieu n'est pas confirmé.
+  //   Photos confirmées par comparaison directe des fichiers :
+  //   01 = façade d'Ikopa, 03 = chalet de Mantasoa (coin feu / extérieur),
+  //   06 = villa Hassani (piscine + océan, vue aérienne).
+  //   02, 04, 05 restent sans légende : leur lieu exact n'est pas confirmé.
   captions: {
     1: { place: "Jardin de l'Ikopa", location: "Anosizato" },
     3: { place: "Lake House Mantasoa", location: "Mantasoa" },
-    5: { place: "Hassani Beach", location: "Foulpointe" },
     6: { place: "Hassani Beach", location: "Foulpointe" },
   },
 };

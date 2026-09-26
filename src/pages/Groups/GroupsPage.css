@@ -1,250 +1,179 @@
-.groups-page {
-  background: #f7f4ee;
-  color: #26352f;
+/* ==========================================================
+   GROUPES & ENTREPRISES — page dédiée
+   ========================================================== */
+
+.gr-header {
+  padding:
+    clamp(7rem, 12vw, 9rem)
+    max(var(--gutter), calc((100% - var(--measure)) / 2))
+    clamp(2.5rem, 5vw, 4rem);
 }
 
-.groups-hero {
-  min-height: 78vh;
+.gr-header h1 {
+  margin: 0.6rem 0 0;
 
-  display: flex;
-  align-items: flex-end;
-
-  padding: 110px 40px 80px;
-
-  background:
-    linear-gradient(
-      to top,
-      rgba(20, 30, 26, 0.9),
-      rgba(20, 30, 26, 0.15)
-    ),
-    url("/images/groups/group-01.jpg") center / cover;
-
-  color: #f8f4ec;
+  font-family: var(--serif);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.05;
 }
 
-.groups-hero__content {
-  width: 100%;
-  max-width: 1200px;
+.gr-header p {
+  max-width: 32rem;
+  margin: 1.5rem 0 0;
 
-  margin: 0 auto;
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.8;
+
+  color: var(--muted);
 }
 
-.groups-hero span,
-.groups-intro > span,
-.groups-cta > span {
-  font-size: 0.68rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
 
-  color: #a9b59f;
-}
+/* ---------- Parcours en 3 étapes ---------- */
 
-.groups-hero h1 {
-  margin: 22px 0 0;
-
-  font-family: "Cormorant Garamond", Georgia, serif;
-
-  font-size: clamp(3.5rem, 7vw, 6.5rem);
-  line-height: 0.9;
-
-  font-weight: 400;
-}
-
-.groups-hero p {
-  max-width: 500px;
-
-  margin: 30px 0 0;
-
-  line-height: 1.7;
-
-  color: rgba(248, 244, 236, 0.75);
-}
-
-.groups-intro {
-  max-width: 1200px;
-
-  margin: 0 auto;
-
-  padding: 120px 40px 90px;
-}
-
-.groups-intro h2 {
-  margin: 22px 0 0;
-
-  font-family: "Cormorant Garamond", Georgia, serif;
-
-  font-size: clamp(3rem, 5vw, 5rem);
-  line-height: 0.95;
-
-  font-weight: 400;
-}
-
-.groups-destinations {
-  max-width: 1200px;
-
-  margin: 0 auto;
-
-  padding: 0 40px 120px;
-}
-
-.groups-destination {
+.gr-steps {
   display: grid;
-  grid-template-columns: 70px 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
 
-  gap: 40px;
-
-  padding: 50px 0;
-
-  border-top: 1px solid rgba(38, 53, 47, 0.15);
+  padding:
+    0
+    max(var(--gutter), calc((100% - var(--measure)) / 2))
+    clamp(3rem, 6vw, 4.5rem);
 }
 
-.groups-destination__number {
+.gr-step {
+  padding-top: 1.2rem;
+
+  border-top: 1px solid var(--line);
+}
+
+.gr-step span {
+  display: block;
+
+  margin-bottom: 0.8rem;
+
   font-size: 0.7rem;
+  letter-spacing: 0.14em;
 
-  color: #858981;
+  color: var(--sand);
 }
 
-.groups-destination__content > span {
-  font-size: 0.68rem;
+.gr-step h3 {
+  margin: 0 0 0.6rem;
 
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-
-  color: #858981;
-}
-
-.groups-destination h3 {
-  margin: 12px 0 4px;
-
-  font-family: "Cormorant Garamond", Georgia, serif;
-
-  font-size: 2.7rem;
+  font-family: var(--serif);
+  font-size: 1.5rem;
   font-weight: 400;
 }
 
-.groups-destination__content p {
+.gr-step p {
   margin: 0;
 
-  font-size: 0.82rem;
+  font-size: 0.88rem;
+  font-weight: 300;
+  line-height: 1.6;
 
-  color: #777a74;
+  color: var(--muted);
 }
 
-.groups-destination__content a {
-  display: inline-block;
 
-  margin-top: 30px;
+/* ---------- Bloc destination ---------- */
 
-  color: #26352f;
+.gr-destination:nth-of-type(even) {
+  background: var(--linen);
+}
 
-  font-size: 0.7rem;
-  font-weight: 600;
+.gr-offers {
+  border-top: 1px solid var(--line);
+  border-bottom: none;
 
-  letter-spacing: 0.08em;
+  color: var(--ink);
+  background: transparent;
+}
+
+/* Réutilise .d-offer (fond sombre par défaut) sur fond clair ici */
+.gr-offers .d-offer {
+  border-right-color: var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.gr-offers .d-offer:last-child {
+  border-right: none;
+}
+
+.gr-offers .d-offer h3 {
+  color: var(--ink);
+}
+
+.gr-offers .d-offer__index {
+  color: var(--sand);
+}
+
+.gr-offers .d-offer__prices i {
+  color: var(--muted);
+}
+
+.gr-offers .d-offer li {
+  color: var(--muted);
+}
+
+.gr-offers .d-offer li::before {
+  background: var(--sand);
+}
+
+.gr-perperson {
+  margin: 0.3rem 0 0;
+
+  font-size: 0.72rem;
+
+  color: var(--sage);
+}
+
+.gr-destination__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.2rem 2rem;
+
+  margin-top: 2rem;
+}
+
+.gr-link {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 
-  text-decoration: none;
+  color: var(--ink);
 }
 
-.groups-destination__content a span {
-  margin-left: 14px;
-}
-
-.groups-destination__offers {
-  display: flex;
-  flex-direction: column;
-
-  border-top: 1px solid rgba(38, 53, 47, 0.1);
-}
-
-.groups-offer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  gap: 20px;
-
-  padding: 16px 0;
-
-  border-bottom: 1px solid rgba(38, 53, 47, 0.1);
-
-  font-size: 0.78rem;
-}
-
-.groups-offer strong {
-  font-weight: 500;
-}
-
-.groups-cta {
-  padding: 110px 40px;
-
-  background: #26352f;
-
-  color: #f8f4ec;
-
+.gr-note {
   text-align: center;
 }
 
-.groups-cta h2 {
-  margin: 25px 0 35px;
+@media (max-width: 1100px) {
+  .gr-offers {
+    grid-template-columns: 1fr 1fr;
+  }
 
-  font-family: "Cormorant Garamond", Georgia, serif;
-
-  font-size: clamp(3rem, 6vw, 5.5rem);
-  line-height: 0.9;
-
-  font-weight: 400;
-}
-
-.groups-cta a {
-  display: inline-flex;
-  align-items: center;
-
-  padding: 15px 22px;
-
-  background: #f8f4ec;
-  color: #26352f;
-
-  text-decoration: none;
-
-  font-size: 0.7rem;
-  font-weight: 600;
-
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.groups-cta a span {
-  margin-left: 18px;
+  .gr-offers .d-offer:nth-child(2n) {
+    border-right: none;
+  }
 }
 
 @media (max-width: 800px) {
-
-  .groups-hero {
-    min-height: 75vh;
-
-    padding: 100px 20px 60px;
+  .gr-steps {
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
 
-  .groups-intro {
-    padding: 85px 20px 65px;
+  .gr-offers {
+    grid-template-columns: 1fr;
   }
 
-  .groups-destinations {
-    padding: 0 20px 80px;
-  }
-
-  .groups-destination {
-    grid-template-columns: 40px 1fr;
-
-    gap: 15px;
-  }
-
-  .groups-destination__offers {
-    grid-column: 2;
-  }
-
-  .groups-cta {
-    padding: 80px 20px;
+  .gr-offers .d-offer {
+    border-right: none;
   }
 }

@@ -1,0 +1,154 @@
+/* ==========================================================
+   HASSANI BEACH — classes propres à cette page (préfixe hb-)
+   Squelette et primitives : src/styles/destination-*.css
+   ========================================================== */
+
+.hb-hero .dest-hero__image {
+  object-position: 50% 55%;
+}
+
+
+/* ---------- Hébergement ---------- */
+
+.hb-stay {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+
+.hb-stay__main {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+
+  object-fit: cover;
+  background: var(--linen);
+}
+
+.hb-stay__info h2 {
+  margin: 0.6rem 0 0;
+
+  font-size: clamp(2rem, 3.2vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.05;
+}
+
+.hb-stay__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 2rem;
+
+  margin: 1.8rem 0 1rem;
+}
+
+.hb-stay__footer .d-price {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+
+  font-size: 1.5rem;
+}
+
+
+/* ---------- Expériences mentionnées ---------- */
+
+.hb-experiences {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+
+  border-top: 1px solid var(--line);
+}
+
+.hb-experiences li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem 1.5rem;
+
+  padding: 1.1rem 0;
+
+  border-bottom: 1px solid var(--line);
+
+  font-size: 1rem;
+}
+
+
+/* ---------- Galerie ---------- */
+
+.hb-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+
+  margin-bottom: 1.2rem;
+}
+
+.hb-gallery img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+
+  object-fit: cover;
+  background: var(--linen);
+}
+
+
+/* ---------- Contact ---------- */
+
+.hb-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+
+  padding-top: 1.2rem;
+
+  border-top: 1px solid var(--line);
+}
+
+.hb-contact a {
+  font-size: 1.1rem;
+  font-variant-numeric: tabular-nums;
+
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.hb-contact a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.hb-contact p.d-note {
+  margin-top: 0.6rem;
+}
+
+.hb-contact p.d-note a {
+  font-size: inherit;
+  font-variant-numeric: normal;
+
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 800px) {
+
+  .hb-stay {
+    grid-template-columns: 1fr;
+    gap: 2.2rem;
+  }
+
+  .hb-experiences li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+
+}

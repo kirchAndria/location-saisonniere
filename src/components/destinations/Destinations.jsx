@@ -1,3 +1,4 @@
+import { useCallback, useEffect, useRef, useState } from "react";
 import { destinations } from "../../data/destinations";
 import "./Destinations.css";
 
@@ -7,7 +8,41 @@ const destinationImages = {
   hassani: "/images/destinations/Hassani/cover.jpg",
 };
 
+const ROTATE_MS = 3000;
+
+function useReducedMotion() {
+  const query = "(prefers-reduced-motion: reduce)";
+  const [reduced, setReduced] = useState(
+    () => typeof window !== "undefined" && window.matchMedia(query).matches
+  );
+  useEffect(() => {
+    const mq = window.matchMedia(query);
+    const onChange = (e) => setReduced(e.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+  return reduced;
+}
+
 function Destinations() {
+  const reduced = useReducedMotion();
+
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const timer = useRef(null);
+
+  const autoplay = destinations.length > 1 && !reduced && !paused;
+
+  const advance = useCallback(() => {
+    setActive((i) => (i + 1) % destinations.length);
+  }, []);
+
+  useEffect(() => {
+    if (!autoplay) return undefined;
+    timer.current = setInterval(advance, ROTATE_MS);
+    return () => clearInterval(timer.current);
+  }, [autoplay, advance]);
+
   return (
     <section className="destinations" id="destinations">
 
@@ -33,67 +68,82 @@ function Destinations() {
       </div>
 
 
-      <div className="destinations__grid">
+      <div
+        className="destinations__row"
+        onMouseLeave={() => setPaused(false)}
+      >
 
-        {destinations.map((destination, index) => (
+        {destinations.map((destination, index) => {
+          const isActive = index === active;
 
-          <a
-            key={destination.id}
-            href={`/destinations/${destination.id}`}
-            className={`destination-card ${
-              index === 0 ? "destination-card--featured" : ""
-            }`}
-          >
-
-            {/* IMAGE */}
-            <div className="destination-card__image">
+          return (
+            <a
+              key={destination.id}
+              href={`/destinations/${destination.id}`}
+              className={`destination-panel ${isActive ? "is-active" : ""}`}
+              onMouseEnter={() => {
+                setPaused(true);
+                setActive(index);
+              }}
+              onFocus={() => {
+                setPaused(true);
+                setActive(index);
+              }}
+              onBlur={() => setPaused(false)}
+            >
 
               <img
+                className="destination-panel__image"
                 src={destinationImages[destination.id]}
                 alt={destination.name}
+                loading="lazy"
               />
 
-            </div>
+              <div className="destination-panel__overlay" />
 
+              <div className="destination-panel__content">
+                <span className="destination-panel__number">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
 
-            {/* OVERLAY */}
-            <div className="destination-card__overlay" />
-
-
-            {/* CONTENT */}
-            <div className="destination-card__content">
-
-              <span className="destination-card__number">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-
-
-              <div>
-
-                <span className="destination-card__location">
+                <span className="destination-panel__location">
                   {destination.location}
                 </span>
 
-                <h3 className="destination-card__name">
+                <h3 className="destination-panel__name">
                   {destination.name}
                 </h3>
 
-                <p className="destination-card__tagline">
+                <p className="destination-panel__tagline">
                   {destination.tagline ?? destination.theme}
                 </p>
 
-                <span className="destination-card__link">
+                <span className="destination-panel__link">
                   Découvrir →
                 </span>
-
               </div>
 
-            </div>
+            </a>
+          );
+        })}
 
-          </a>
+      </div>
 
+      <div className="destinations__dots" role="tablist" aria-label="Destination mise en avant">
+        {destinations.map((destination, index) => (
+          <button
+            key={destination.id}
+            type="button"
+            role="tab"
+            aria-selected={index === active}
+            aria-label={destination.name}
+            className={index === active ? "is-active" : ""}
+            onClick={() => {
+              setPaused(true);
+              setActive(index);
+            }}
+          />
         ))}
-
       </div>
 
     </section>

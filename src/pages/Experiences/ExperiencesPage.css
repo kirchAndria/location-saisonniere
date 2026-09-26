@@ -1,118 +1,95 @@
-.experiences-page {
-  min-height: 100vh;
+/* ==========================================================
+   EXPÉRIENCES — page éditoriale organisée par destination
+   ========================================================== */
 
-  padding-top: 120px;
-
-  background: #f7f4ee;
-  color: #26352f;
-
-  font-family: "Jost", system-ui, sans-serif;
+.xp-header {
+  padding:
+    clamp(7rem, 12vw, 9rem)
+    max(var(--gutter), calc((100% - var(--measure)) / 2))
+    clamp(2.5rem, 5vw, 4rem);
 }
 
-.experiences-header {
-  max-width: 1200px;
+.xp-header h1 {
+  margin: 0.6rem 0 0;
 
-  margin: 0 auto;
-
-  padding: 80px 40px;
+  font-family: var(--serif);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.05;
 }
 
-.experiences-header > span {
-  font-size: 0.7rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: #71806c;
+.xp-header p {
+  max-width: 32rem;
+  margin: 1.5rem 0 0;
+
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.8;
+
+  color: var(--muted);
 }
 
-.experiences-header h1 {
-  margin: 25px 0;
+.xp-category:nth-child(odd) {
+  background: var(--linen);
+}
 
-  font-family: "Cormorant Garamond", Georgia, serif;
+.xp-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+}
 
-  font-size: clamp(4rem, 8vw, 7rem);
-  line-height: 0.9;
+.xp-column {
+  padding-top: 1.2rem;
 
+  border-top: 1px solid var(--line);
+}
+
+.xp-column h3 {
+  margin: 0 0 0.9rem;
+
+  font-size: 1.35rem;
   font-weight: 400;
 }
 
-.experiences-header p {
-  max-width: 550px;
-
-  line-height: 1.7;
-
-  color: #6d716b;
+.xp-column h3 a {
+  color: var(--ink);
+  text-decoration: none;
 }
 
-.experiences-list {
-  max-width: 1200px;
-
-  margin: 0 auto;
-
-  padding: 0 40px 100px;
+.xp-column h3 a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
-.experiences-list > div {
-  margin-bottom: 70px;
+.xp-column__status {
+  margin: -0.4rem 0 1rem;
 }
 
-.experiences-list h2 {
-  margin-bottom: 5px;
-
-  font-family: "Cormorant Garamond", Georgia, serif;
-
-  font-size: 3rem;
-  font-weight: 400;
-}
-
-.experiences-list > div > p {
-  margin-bottom: 25px;
-
-  color: #777a74;
-}
-
-.experience-row {
+.xp-tags {
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
 
-  gap: 30px;
-
-  padding: 22px 0;
-
-  border-top: 1px solid rgba(38, 53, 47, 0.14);
-}
-
-.experience-row > span {
-  width: 35px;
-
-  font-size: 0.65rem;
-
-  color: #92948e;
-}
-
-.experience-row h3 {
   margin: 0;
+  padding: 0;
 
-  font-family: "Cormorant Garamond", Georgia, serif;
-
-  font-size: 1.8rem;
-  font-weight: 400;
+  list-style: none;
 }
 
-.experience-row p {
-  margin: 5px 0 0;
+.xp-tags li {
+  padding: 0.4rem 0.85rem;
 
   font-size: 0.8rem;
+  font-weight: 300;
 
-  color: #777a74;
+  border: 1px solid var(--line);
+  border-radius: 999px;
 }
 
-@media (max-width: 700px) {
-
-  .experiences-header {
-    padding: 60px 20px;
+@media (max-width: 900px) {
+  .xp-columns {
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
-
-  .experiences-list {
-    padding: 0 20px 70px;
-  }
-
 }
